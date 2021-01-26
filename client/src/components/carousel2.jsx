@@ -2,10 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { SVGRight, SVGLeft } from './images/SVGs.jsx';
 // import styleHelpers from './styleSheets/carousel2Styles.js';
 import {
-  imgStyle,
-  divIm,
-  divver,
-  imgContainer,
   rfkRw,
   rfkBtn,
   rfkDivul,
@@ -66,7 +62,7 @@ const Slidee2 = ({ images2=[] }) => {
       </div>
       <div className="rfkTable" style={{ ...rfkTable }}>
         <div className="rfk_prev" style={{ ...rfkBtn }} id="prevBtn" onClick={() => clicker2('prev')}><SVGLeft /></div>
-        <div className="rfkWrapper">
+        <div className="rfkWrapper" style={{ ...rfkWrapper }}>
           <div className="rfkDivul" style={{ ...rfkDivul }}>
             <ul className="rfkProducts" style={{ ...rfkProducts }}>
               {
