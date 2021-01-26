@@ -8,7 +8,7 @@ module.exports = {
   mode: 'development',
   entry: `${SRC_DIR}/suggestionsIndex.jsx`,
   output: {
-    filename: 'bundle.js',
+    filename: 'bundle5.js',
     path: DIST_DIR,
   },
   module:
