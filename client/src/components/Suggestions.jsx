@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Slidee2 from './carousel2.jsx';
 
 class Suggestions extends React.Component {
@@ -7,10 +8,23 @@ class Suggestions extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    const imageArr = [];
+    return axios.get('/bechampions/suggestions')
+      .then((response) => {
+        response.data.forEach((item) => {
+          imageArr.push(item[0]);
+        });
+        // console.log(imageArr);#
+        this.setState({ images: imageArr });
+      })
+      .catch((err) => console.log(err));
+  }
+
   render() {
     return (
       <div style={{ textAlign: 'center' }}>
-        <Slidee2 />
+        <Slidee2 images2={this.state.images} />
       </div>
     );
   }
