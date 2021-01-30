@@ -1,4 +1,5 @@
 const { RelatedSuggestions, CurrentProducts } = require('../dbIndex.js');
+const mongoose = require('mongoose');
 const helpers = require('./madLibBuilders.js');
 
 const currentProductsFn = helpers.currentProducts;
@@ -13,7 +14,12 @@ const currentProductFn = helpers.currentProduct;
 const seeder = () => {
   const lists = currentProductsFn(currentProductFn, relatedSuggestionsFn);
   const { currentProducts, relatedSuggestions } = lists;
-  RelatedSuggestions.create(relatedSuggestions);
-  CurrentProducts.create(currentProducts);
+  return RelatedSuggestions.create(relatedSuggestions)
+    .then((response) => CurrentProducts.create(currentProducts))
+    .then((response) => {
+      // db.connections.disconnect();
+      mongoose.disconnect();
+    })
+    .catch((err) => console.log(err));
 };
 seeder();
